@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="scripts/jquery.fullPage.css" />
+  <link rel="stylesheet" type="text/css" href="scripts/style.css" />
+
+  <script type="text/javascript" src="scripts/fullpage.parallax.min.js"></script>
+  <script type="text/javascript" src="scripts/jquery.fullpage.extensions.min.js"></script>
+
+  <script>
+
+  $(document).ready(function() {
+    $('#fullpage').fullpage({
+      sectionsColor: ['#FAEFAE', '#4BBFC3', '#7BAABE'],
+      // anchors: ['firstPage', 'secondPage', 'thirdpage'],
+      parallax: true,
+      parallaxkey: '24920A75-82A8484A-BB3B85EF-55B7F62F',
+      parallaxOptions: {
+        type: 'reveal',
+        percentage: 100,
+        property: 'translate'
+      },
+      afterLoad: function(anchorLink, index){
+
+					//section 2
+					if(index == 2){
+
+            $('#section1 .fp-bg').animate({
+              backgroundSize: '130%'
+            }, 300, function() {
+
+              $.fn.fullpage.parallax.setOption('type', 'cover');
+              myVivus.play(function(){
+
+                setTimeout(function(){
+                  $.fn.fullpage.moveSectionDown();
+                },200);
+
+              });
+
+            });
+
+
+
+          console.log('1!');
+
+					}
+				}
+    });
+  });
+
+  </script>
+
+</head>
+
+<body>
+
+  <div id="fullpage">
+  	<div class="section" id="section0">
+      <div class="fp-bg"></div>
+
+      <div class="intro">
+        Transformatorhuis op zee
+      </div>
+
+    </div>
+
+  	<div class="section" id="section1">
+      <div class="fp-bg"></div>
+
+      <svg id="vivus1" x="0px" y="0px" viewBox="0 0 654 276" enable-background="new 0 0 654 276" xml:space="preserve">
+        <path fill="none" stroke="#FFBE00" stroke-width="6" stroke-miterlimit="10" d="M8.9,9.2 199.9,87.2 414.1,265.1 645.3,248.2 "/>
+      </svg>
+
+
+    </div>
+
+  	<div class="section" id="section2">
+      <div class="fp-bg"></div>
+
+      <div class="intro">
+        Landing kabel bij Noordwijk
+      </div>
+
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="scripts/vivus.js"></script>
+  <script type="text/javascript" src="scripts/pathformer.js"></script>
+  <script>
+    var myVivus = new Vivus('vivus1', {
+      duration: 70,
+      start: 'manual'
+    });
+  </script>
+</body>
+</html>

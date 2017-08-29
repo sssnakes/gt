@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'MavenPro';
+    src: url('../assets/fonts/MavenPro-Regular.ttf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'MavenPro-Med';
+    src: url('../fonts/MavenPro-Medium.ttf');
+    font-weight: bolder;
+}
+
+*{
+  font-family: 'MavenPro', Arial, sans-serif;
+  color: #fff;
+  font-size: 82px;
+}
+
+.fp-bg {
+  background-size: 100%;
+  background-position: center;
+}
+
+#section0 .fp-bg {
+  background-image: url('../assets/images/a-1.jpg');
+
+}
+
+#section1{
+
+}
+
+#section1 .fp-bg {
+  background-image: url('../assets/images/b-1.jpg');
+}
+
+#section1 svg{
+  width: 50%;
+}
+
+#vivus1{
+
+}
+
+#section2 {
+  box-shadow: 0 0 40px #000;
+}
+
+#section2 .fp-bg {
+  background-image: url('../assets/images/a-2.jpg');
+}
+
+.fp-bg {
+  top:0;
+  bottom:0;
+  width: 100%;
+  position:absolute;
+  z-index: -1;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: all 1000ms ease;
+}
+
+.section{
+  text-align: center;
+}
+
+.fp-bg{
+  transition: all 1000ms ease
+}
+
+.fp-slide, .fp-section{
+  will-change: transform;
+  transition: background-position 1000ms ease;
+}
+
+.intro{
+  text-shadow: 0 0 25px #000;
+}
