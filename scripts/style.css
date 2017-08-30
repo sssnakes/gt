@@ -21,34 +21,12 @@
   background-position: center;
 }
 
-#section0 .fp-bg {
-  background-image: url('../assets/images/a-1.jpg');
-
+.border{
+  height: 100vw;
 }
 
-#section1{
-
-}
-
-#section1 .fp-bg {
-  background-image: url('../assets/images/b-1.jpg');
-}
-
-#section1 svg{
-  width: 50%;
-}
-
-#vivus1{
-
-}
-
-#section2 {
-  box-shadow: 0 0 40px #000;
-}
-
-#section2 .fp-bg {
-  background-image: url('../assets/images/a-2.jpg');
-}
+/* SECTIONS
+----------------------------------------------------*/
 
 .fp-bg {
   top:0;
@@ -72,6 +50,62 @@
 .fp-slide, .fp-section{
   will-change: transform;
   transition: background-position 1000ms ease;
+}
+
+#section0 .fp-bg {
+  background-image: url('../assets/images/a-1.jpg');
+
+}
+
+#section1 .fp-bg {
+  background-image: url('../assets/images/b-1.jpg');
+}
+
+#section2 .fp-bg {
+  background-image: url('../assets/images/a-2.jpg');
+}
+
+#section3 .fp-bg {
+  background-image: url('../assets/images/b-2.jpg');
+}
+
+#section4 .fp-bg {
+  background-image: url('../assets/images/a-2.jpg');
+}
+
+#section0{
+
+}
+
+#section1{
+
+}
+
+#section1 svg{
+  width: 50%;
+}
+
+
+/* HEADER
+----------------------------------------------------*/
+
+.header-top{
+  position: fixed;
+  width: 400px;
+  height: 100px;
+  background-color: #fff;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0 0 13px 13px;
+  z-index: 100;
+}
+
+/* VIVUS
+----------------------------------------------------*/
+
+#vivus1{
+
 }
 
 .intro{
