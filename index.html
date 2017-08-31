@@ -16,8 +16,9 @@
   <script>
 
   $(document).ready(function() {
+
     $('#fullpage').fullpage({
-      sectionsColor: ['#FAEFAE', '#4BBFC3', '#7BAABE'],
+      sectionsColor: ['#435435', '#435435', '#435435'],
       // anchors: ['firstPage', 'secondPage', 'thirdpage'],
       parallax: true,
       parallaxkey: '24920A75-82A8484A-BB3B85EF-55B7F62F',
@@ -30,9 +31,30 @@
 
 					//section 2
 					if(index == 2){
-            $('#section1 .fp-bg').animate({
+            $('#section1 svg').animate({
+              width: '60%'
+            }, 300);
+
+            $('#section1 .bg-per').animate({
               backgroundSize: '120%'
-            }, 300, 'easeInOutQuad', function() {
+            }, 300, function() {
+              $.fn.fullpage.parallax.setOption('type', 'cover');
+            });
+
+            myVivus.play(function(){
+              setTimeout(function(){
+                $.fn.fullpage.moveSectionDown();
+              },200, function() {
+                $.fn.fullpage.parallax.setOption('type', 'reveal');
+              });
+            });
+					}
+
+          //section 4
+          if(index == 4){
+            $('#section3 .bg-per').animate({
+              backgroundSize: '100%'
+            }, 500, function() {
               $.fn.fullpage.parallax.setOption('type', 'cover');
               myVivus.play(function(){
                 setTimeout(function(){
@@ -40,7 +62,7 @@
                 },200);
               });
             });
-					}
+          }
 
           //section reset
 					// if(index == 3){
@@ -57,26 +79,29 @@
 <body>
 
   <div class="header-top">
-
+    <div class="logo1"></div>
+    <div class="logo2"></div>
+    <div class="logo-text">Voor onze klanten van vandaag en morgen.</div>
   </div>
 
   <div id="fullpage">
   	<div class="section" id="section0">
-      <div class="fp-bg"></div>
+      <div class="fp-bg bg-cov"></div>
 
       <div class="intro">
-        Transformatorhuis op zee
+        <div class="page-number">1</div>
+        <h1>Transformatorhuis op zee</h1>
       </div>
 
       <div class="next-page">
         <p>Next Page</p>
+        <div class="arrow-down"></div>
       </div>
 
     </div>
 
   	<div class="section" id="section1">
-      <div class="fp-bg">
-        <div class="border"></div>
+      <div class="fp-bg bg-per">
       </div>
 
       <svg id="vivus1" x="0px" y="0px" viewBox="0 0 838.6 407.1" enable-background="new 0 0 838.6 407.1" xml:space="preserve">
@@ -138,32 +163,32 @@
         <circle fill="none" stroke="#FFBE00" stroke-width="6" stroke-miterlimit="10" cx="758.3" cy="353.2" r="42.8"/>
         <path fill="none" stroke="#FFBE00" stroke-width="6" stroke-miterlimit="10" d="M122,114.7 275,173 379,338.8 621,338.8
         	758.3,353.2 "/>
-        </svg>
-
-
-
-
-
+      </svg>
 
     </div>
 
   	<div class="section" id="section2">
-      <div class="fp-bg"></div>
+      <div class="fp-bg bg-cov"></div>
 
       <div class="intro">
         Landing kabel bij Noordwijk
       </div>
 
+      <div class="next-page">
+        <p>Next Page</p>
+        <div class="arrow-down"></div>
+      </div>
+
     </div>
 
     <div class="section" id="section3">
-      <div class="fp-bg"></div>
+      <div class="fp-bg bg-per"></div>
 
 
     </div>
 
     <div class="section" id="section4">
-      <div class="fp-bg"></div>
+      <div class="fp-bg bg-cov"></div>
 
       <div class="intro">
         Landing kabel bij Noordwijk
@@ -182,6 +207,13 @@
       pathTimingFunction: Vivus.EASE_OUT,
       type: 'sync'
     });
+
+    $(document).ready(function() {
+      $('.next-page').click(function(){
+        $.fn.fullpage.moveSectionDown();
+      });
+    });
+
   </script>
 </body>
 </html>
