@@ -13,7 +13,6 @@
 *{
   font-family: 'MavenPro', Arial, sans-serif;
   color: #fff;
-  font-size: 82px;
 }
 
 .fp-bg {
@@ -30,6 +29,23 @@
 
 .border{
   height: 100vw;
+}
+
+.videoSection{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top:0;
+  right:0;
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  background-color: black; /* in case the video doesn't fit the whole page*/
+    background-image: /* our video */;
+    background-position: center center;
+    background-size: contain;
+    object-fit: cover; /*cover video background */
+    z-index:0;
 }
 
 
@@ -60,23 +76,85 @@
   transition: background-position 1000ms ease;
 }
 
+.intro{
+  text-shadow: 0 0 25px #000;
+  z-index: 3;
+  text-align: left;
+  font-size: 24px;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#section0 .intro{
+  top: 60%;
+  left: 74%;
+  width: 400px;
+}
+
+#section1 .intro{
+  top: 55%;
+  left: 26%;
+  width: 360px;
+}
+
+#section2 .intro{
+  top: 34%;
+  left: 69%;
+  width: 400px;
+}
+
+#section3 .intro{
+  top: 62%;
+  left: 62%;
+  width: 690px;
+}
+
+#section3 .intro p{
+  display: inline-block;
+  width: 325px;
+  vertical-align: top;
+  margin: 50px 0 0 0;
+}
+
+#section3 .intro .video-thumbnail{
+  height: 200px;
+  width: 350px;
+  display: inline-block;
+  background-image: url('../assets/images/kids1.png');
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  border: 2px solid #fff;
+}
+
+.sidebar-demo{
+  /*background-image: url('../assets/images/sidebar-demo.png');*/
+  position: fixed;
+  z-index: 1000;
+  height: 100vh;
+  width: 123px;
+}
+
+.sidebar-demo img{
+  height: 100%;
+  width: auto;
+}
+
 #section0 .fp-bg {
   background-image: url('../assets/images/a-1.jpg');
-
 }
 
 #section1 .fp-bg {
-  background-image: url('../assets/images/b-1.jpg');
-  background-size: 100%;
+  background-image: url('../assets/images/a-1.jpg');
 }
 
 #section2 .fp-bg {
-  background-image: url('../assets/images/a-2.jpg');
+  background-image: url('../assets/images/satellite-1.jpg');
+  background-size: 120%;
 }
 
 #section3 .fp-bg {
-  background-image: url('../assets/images/b-2.jpg');
-  background-size: 250%;
+  background-image: url('../assets/images/coast.png');
 }
 
 #section4 .fp-bg {
@@ -129,23 +207,56 @@
   background-repeat: no-repeat;
   margin: 0;
   display: inline-block;
-  bottom: 46px;
+  bottom: -12px;
   position: relative;
+}
+
+.lightbox-container, .lightbox-vid, .close-lightbox{
+  display: none;
+}
+
+.lightbox-container{
+  position: fixed;
+  z-index: 100;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+  opacity: .5;
+}
+
+.lightbox-vid{
+  transform: translateX(-50%) translateY(-50%);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 200;
+}
+
+.close-lightbox{
+  background-image: url(../assets/svgs/x.svg);
+  height: 65px;
+  width: 65px;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 150;
+  cursor: pointer;
 }
 
 /* HEADER
 ----------------------------------------------------*/
 
 .header-top{
-  position: fixed;
+  position: absolute;
   width: 600px;
-  height: 100px;
   background-color: #fff;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 0 0 13px 13px;
   z-index: 100;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 .logo1{
@@ -154,6 +265,7 @@
   width: 75px;
   background-repeat: no-repeat;
   display: inline-block;
+  margin-left: -25px;
 }
 
 .logo2{
@@ -162,21 +274,25 @@
   width: 90px;
   background-repeat: no-repeat;
   display: inline-block;
+  margin-left: 10px;
 }
 
 .logo-text{
   color: #000;
   font-size: 16px;
   display: inline-block;
+  position: relative;
+  top: -15px;
+  left: 30px;
 }
 
 /* VIVUS
 ----------------------------------------------------*/
 
 #vivus1{
-
-}
-
-.intro{
-  text-shadow: 0 0 25px #000;
+  bottom: -40px;
+  height: 80%;
+  position: absolute;
+  left: 39%;
+  transform: translateX(-50%);
 }
