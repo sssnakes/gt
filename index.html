@@ -29,10 +29,13 @@
   // RESET FUNCTION
   var reseTT = function() {
 
-    vivusNo1.reset();
-    vivusNo2.reset();
-    vivusNo3.reset();
     $('#section3 .fp-bg').css('background-size', '120%');
+
+    vivusLine1.reset();
+    vivusLine2.reset();
+    vivusLine3.reset();
+    vivusLine4.reset();
+    vivusLine5.reset();
 
   };
 
@@ -53,38 +56,74 @@
 
           reseTT();
 
-            if(index == 4){
-              $('#section3 .fp-bg').animate({
-                backgroundSize: '100%'
-              }, 500, function() {
-                vivusNo1.play();
-              });
+            if(index == 8){
+              vivusLine1.play();
             }
 
-            if(index == 13){
-              vivusNo2.play();
+            if(index == 9){
+              vivusLine2.play();
             }
 
-            if(index == 17){
-              vivusNo4.play();
+            if(index == 11){
+              vivusLine3.play();
             }
 
-            if(index == 25){
-              vivusNo3.play();
+            if(index == 20){
+              vivusLine4.play();
+            }
+
+            if(index == 22){
+              vivusLine5.play();
             }
 
             var perC = '0';
 
-            if(index >= 1  && index <= 3 ){ perC = '0' }
-            if(index >= 4  && index <= 8 ){ perC = '20%' }
-            if(index >= 9  && index <= 11){ perC = '40%' }
-            if(index >= 12 && index <= 15){ perC = '60%' }
-            if(index >= 16 && index <= 21){ perC = '80%' }
-            if(index >= 22 && index <= 28){ perC = '100%' }
+              if(index >= 1  && index <= 5 ){ perC = '0' }
+              if(index >= 6  && index <= 11){ perC = '20%' }
+              if(index >= 12 && index <= 14){ perC = '40%' }
+              if(index >= 15 && index <= 18){ perC = '60%' }
+              if(index >= 18 && index <= 22){ perC = '80%' }
+              if(index >= 23 && index <= 24){ perC = '100%' }
+
+            $('.line-marker-2').animate({
+              top: perC
+            }, 300);
 
             $('.line-green').animate({
               height: perC
-            }, 300);
+            }, 300, function(){
+
+              if(index >= 6){
+                $('.line-dot-2').css('background-color', '#3ABFC9');
+              } else {
+                $('.line-dot-2').css('background-color', '#364081');
+              }
+
+              if(index >= 12){
+                $('.line-dot-3').css('background-color', '#3ABFC9');
+              } else {
+                $('.line-dot-3').css('background-color', '#364081');
+              }
+
+              if(index >= 15){
+                $('.line-dot-4').css('background-color', '#3ABFC9');
+              } else {
+                $('.line-dot-4').css('background-color', '#364081');
+              }
+
+              if(index >= 18){
+                $('.line-dot-5').css('background-color', '#3ABFC9');
+              } else {
+                $('.line-dot-5').css('background-color', '#364081');
+              }
+
+              if(index >= 23){
+                $('.line-dot-6').css('background-color', '#3ABFC9');
+              } else {
+                $('.line-dot-6').css('background-color', '#364081');
+              }
+
+            });
 
 
   				},
@@ -106,7 +145,7 @@
         $('iframe').attr('src', $('iframe').attr('src'));
       });
 
-      $('.video-thumbnail').click(function(){
+      $('.thumbnail').click(function(){
         $('.lightbox-container').fadeIn();
         $('.lightbox-vid').fadeIn();
         $('.close-lightbox').fadeIn();
@@ -116,7 +155,7 @@
       // SIDEBAR OPEN
       $('.sidebar').mouseover(function(){
         $('.sidebar').stop().animate({
-          width: 560
+          width: 630
         }, 150);
 
         $('.icon-marker').fadeOut('fast');
@@ -161,16 +200,18 @@
         $.fn.fullpage.moveTo(indexNo);
       });
 
-      $('.share-container').mouseover(function(){
+      $('.share-container').mouseenter(function(){
         $('.share-hider').delay(200).fadeIn();
-      }).mouseout(function(){
-        $('.share-hider').fadeOut();
+        $('.share-icon-main').fadeOut(100);
+      }).mouseleave(function(){
+        $('.share-hider').fadeOut(50);
+        $('.share-icon-main').delay(200).fadeIn(100);
       });
 
-      $('.share-buttons li').mouseover(function(){
+      $('.share-buttons li').mouseenter(function(){
         var shareT = $(this).data('social');
         $('.share-text').html(shareT);
-      }).mouseout(function(){
+      }).mouseleave(function(){
         $('.share-text').html('Share');
       });
 
@@ -186,7 +227,7 @@
 
 <body>
 
-  <!-- <div class="share-icon-main"></div> -->
+  <div class="share-icon-main"></div>
   <div class="share-container">
     <div class="share-hider">
       <div class="share-text">Share</div>
@@ -213,8 +254,9 @@
       <div class="line-dot line-dot-6"></div>
       <div class="line-blue"></div>
       <div class="line-green">
-        <div class="line-marker"></div>
+        <!-- <div class="line-marker"></div> -->
       </div>
+      <div class="line-marker-2"></div>
     </div>
     <div class="links-container">
       <div id="dot-link-1" class="dot-link" data-index="1">
@@ -311,9 +353,9 @@
             </g>
           </svg>
         </div>
-        <div class="link-text">Location 1</div>
+        <div class="link-text">Windpark Eneco Luchterduinen</div>
       </div>
-      <div  id="dot-link-2" class="dot-link" data-index="4">
+      <div  id="dot-link-2" class="dot-link" data-index="6">
         <div class="link-icon">
           <svg id="icon2" viewBox="20.9 195.3 800 800" enable-background="new 20.9 195.3 800 800">
             <g>
@@ -407,9 +449,9 @@
             </g>
           </svg>
         </div>
-        <div class="link-text">Location 2</div>
+        <div class="link-text">Hoogspanningsstation op zee</div>
       </div>
-      <div  id="dot-link-3" class="dot-link" data-index="9">
+      <div  id="dot-link-3" class="dot-link" data-index="12">
         <div class="link-icon">
           <svg id="icon3" viewBox="20.9 195.3 800 800" enable-background="new 20.9 195.3 800 800">
             <g>
@@ -503,9 +545,9 @@
             </g>
           </svg>
         </div>
-        <div class="link-text">Location 3</div>
+        <div class="link-text">Hoogspanningsstation aan land</div>
       </div>
-      <div  id="dot-link-4" class="dot-link" data-index="12">
+      <div  id="dot-link-4" class="dot-link" data-index="15">
         <div class="link-icon">
           <svg id="icon4" viewBox="20.9 195.3 800 800" enable-background="new 20.9 195.3 800 800">
             <g>
@@ -598,9 +640,9 @@
             </g>
           </svg>
         </div>
-        <div class="link-text">Location 4</div>
+        <div class="link-text">ProRail onderstation Lisse</div>
       </div>
-      <div  id="dot-link-5" class="dot-link" data-index="16">
+      <div  id="dot-link-5" class="dot-link" data-index="18">
         <div class="link-icon">
           <svg id="icon5" viewBox="20.9 195.3 800 800" enable-background="new 20.9 195.3 800 800">
             <g>
@@ -694,9 +736,9 @@
             </g>
           </svg>
         </div>
-        <div class="link-text">Location 5</div>
+        <div class="link-text">Trein van NS</div>
       </div>
-      <div  id="dot-link-6" class="dot-link" data-index="22">
+      <div  id="dot-link-6" class="dot-link" data-index="23">
         <div class="link-icon">
           <svg id="icon6" viewBox="20.9 195.3 800 800" enable-background="new 20.9 195.3 800 800">
             <g>
@@ -791,7 +833,7 @@
             </g>
             </svg>
         </div>
-        <div class="link-text">Location 6</div>
+        <div class="link-text">Station Amsterdam Centraal</div>
       </div>
     </div>
   </div>
@@ -799,13 +841,13 @@
   <div class="sidebar-screen"></div>
 
   <div class="lightbox-container"></div>
-  <iframe class="lightbox-vid" width="560" height="315" src="https://www.youtube.com/embed/M-UzitdFkeQ" frameborder="0" allowfullscreen></iframe>
+    <iframe class="lightbox-vid" width="560" height="315" src="https://www.youtube.com/embed/M-UzitdFkeQ" frameborder="0" allowfullscreen></iframe>
   <div class="close-lightbox"></div>
 
 
   <div id="fullpage">
 
-    <!-- PAGE 0 ------------------------------------------------------------------------------------>
+    <!-- PAGE 1 ------------------------------------------------------------------------------------>
   	<div class="section" id="section0">
 
       <div class="header-top">
@@ -815,24 +857,8 @@
       </div>
 
       <div class="text-box">
-        <p>Text</p>
-      </div>
-
-      <video class="videoSection" loop muted data-autoplay>
-        <source src="assets/images/000.mp4" type="video/mp4">
-        <source src="assets/images/000.webm" type="video/webm">
-      </video>
-
-      <div class="next-page">
-        <div class="arrow-down"></div>
-      </div>
-    </div>
-
-    <!-- PAGE 1 ------------------------------------------------------------------------------------>
-    <div class="section" id="section1">
-
-      <div class="text-box">
-        <p>Het waait behoorlijk boven de Noordzee. We zijn 23 kilometer verwijderd van de Nederlandse kust, ter hoogte van Zandvoort aan Zee.</p>
+        <h1>Volg het spoor van de windstroom</h1>
+        <p>Als eersten in de wereld reizen treinreizigers in Nederland op 100% windstroom. Start met scrollen en beleef de reis van windmolen naar trein.</p>
       </div>
 
       <video class="videoSection" loop muted data-autoplay>
@@ -846,13 +872,16 @@
     </div>
 
     <!-- PAGE 2 ------------------------------------------------------------------------------------>
-    <div class="section" id="section2">
-
-      <div class="fp-bg" style="background-image: url('assets/images/002.jpg');"></div>
+    <div class="section" id="section1">
 
       <div class="text-box">
-        <p>Text</p>
+        <p>Het waait behoorlijk boven de Noordzee. We zijn 23 kilometer verwijderd van de Nederlandse kust, ter hoogte van Zandvoort aan Zee.</p>
       </div>
+
+      <video class="videoSection" loop muted data-autoplay>
+        <source src="assets/images/002.mp4" type="video/mp4">
+        <source src="assets/images/002.webm" type="video/webm">
+      </video>
 
       <div class="next-page">
         <div class="arrow-down"></div>
@@ -860,22 +889,13 @@
     </div>
 
     <!-- PAGE 3 ------------------------------------------------------------------------------------>
-    <div class="section" id="section3">
+    <div class="section" id="section2">
 
       <div class="fp-bg" style="background-image: url('assets/images/003.jpg');"></div>
 
-      <svg  id="vivus-1" x="0px" y="0px" viewBox="0 0 344.8 746.4" enable-background="new 0 0 344.8 746.4" xml:space="preserve">
-        <path fill="none" stroke="#3ABFC9" stroke-width="5" stroke-miterlimit="10" d="M44.8,19.3 22.9,136 125,152.6 139.6,327.6
-        	282.3,514.1 267.7,713 "/>
-        <path fill="none" stroke="#3ABFC9" stroke-width="5" stroke-miterlimit="10" d="M282.3,53.7 275,148.5 125,152.6 "/>
-        <path fill="none" stroke="#3ABFC9" stroke-width="5" stroke-miterlimit="10" d="M212.5,53.7 203.6,125.5 125,152.6 "/>
-        <path fill="none" stroke="#3ABFC9" stroke-width="5" stroke-miterlimit="10" d="M95.8,42.2 86.5,109.9 125,152.6 "/>
-        <path fill="none" stroke="#3ABFC9" stroke-width="5" stroke-miterlimit="10" d="M152.6,48.5 131.2,122.4 125,152.6 "/>
-      </svg>
-
-
       <div class="text-box">
-        <p>Dit is waar de reis van wind naar trein begint. Hier raakt de wind de bladen van één van de 43 windmolens van Eneco windpark Luchterduinen.</p>
+        <h1>Windpark Eneco Luchterduinen</h1>
+        <p>Dit is waar de reis van wind naar trein begint. Hier raakt de wind de bladen van &eacute;&eacute;n van de 43 windmolens van windpark Eneco Luchterduinen.</p>
       </div>
 
       <div class="next-page">
@@ -884,10 +904,10 @@
     </div>
 
     <!-- PAGE 4 ------------------------------------------------------------------------------------>
-    <div class="section" id="section4">
+    <div class="section" id="section3">
 
       <div class="text-box">
-        <p>Windmolens draaien het beste als ze staat recht op de wind gericht staan. De positie van de molen wordt dankzij sensors en computers voortdurend aangepast aan de richting van de wind.</p>
+        <p>Windmolens draaien het beste als ze recht in de wind gericht staan. De ori&euml;ntatie van de wieken wordt met behulp van sensoren en computers voortdurend aangepast aan de richting van de wind.</p>
       </div>
 
       <video class="videoSection" loop muted data-autoplay>
@@ -901,7 +921,7 @@
     </div>
 
     <!-- PAGE 5 ------------------------------------------------------------------------------------>
-    <div class="section" id="section5">
+    <div class="section" id="section4">
 
       <div class="text-box">
         <p>Elke minuut draait de rotor van de windmolen ongeveer 16 keer. Dit drijft een dynamo aan, waardoor elektriciteit ontstaat. Zo verandert wind in stroom.</p>
@@ -918,12 +938,13 @@
     </div>
 
     <!-- PAGE 6 ------------------------------------------------------------------------------------>
-    <div class="section" id="section6">
+    <div class="section" id="section5">
 
       <div class="fp-bg" style="background-image: url('assets/images/006.jpg');"></div>
 
       <div class="text-box">
-        <p>De elektriciteit loopt door een ondergrondse kabel van de windmolens naar een hoogspanningsstation op zee. Hier wordt de spanning van de elektriciteit aangepast voor vervoer richting land.</p>
+        <h1>Hoogspanningstation op zee</h1>
+        <p>De elektriciteit loopt door een ondergrondse kabel van de windmolen naar een hoogspanningsstation op zee. Hier wordt de spanning van de elektriciteit aangepast voor vervoer richting land. </p>
       </div>
 
       <div class="next-page">
@@ -932,13 +953,16 @@
     </div>
 
     <!-- PAGE 7 ------------------------------------------------------------------------------------>
-    <div class="section" id="section7">
-
-      <div class="fp-bg" style="background-image: url('assets/images/007.jpg');"></div>
+    <div class="section" id="section6">
 
       <div class="text-box">
         <p>Door een kabel die is ingraven in de zeebodem stroomt de windstroom richting onze kust.</p>
       </div>
+
+      <video class="videoSection" loop muted data-autoplay>
+        <source src="assets/images/007.mp4" type="video/mp4">
+        <source src="assets/images/007.webm" type="video/webm">
+      </video>
 
       <div class="next-page">
         <div class="arrow-down"></div>
@@ -946,16 +970,31 @@
     </div>
 
     <!-- PAGE 8 ------------------------------------------------------------------------------------>
-    <div class="section" id="section8">
+    <div class="section" id="section7">
+
+      <div class="fp-bg" style="background-image: url('assets/images/008.jpg');"></div>
+
+      <svg id="def-line-1" x="0px" y="0px" viewBox="0 0 128.1 343.6" enable-background="new 0 0 128.1 343.6">
+        <polyline fill="none" stroke="#3ABFC9" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="64.2,77.5
+        	33.3,46.4 33.3,14.2 "/>
+        <polyline fill="none" stroke="#3ABFC9" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="15.3,61.1 38,84.8
+        	64.2,77.5 "/>
+        <polyline fill="none" stroke="#3ABFC9" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="58.9,20 64.2,51.6
+        	64.2,77.5 "/>
+        <polyline fill="none" stroke="#3ABFC9" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="95.7,26.9
+        	85.4,55.9 64.2,77.5 "/>
+        <polyline fill="none" stroke="#3ABFC9" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="112.8,61.1
+        	87.2,88.5 64.2,77.5 "/>
+        <polyline fill="none" stroke="#3ABFC9" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="64.3,77.5 75.4,184.5 59.6,347.8 "/>
+      </svg>
+
 
       <div class="text-box">
-        <p>“Hoe ver kan een NS-trein rijden op 1 uur draaien van een Eneco windmolen?"</p>
+        <p>Hoe ver kan een NS-trein rijden op 1 uur draaien van een windmolen?</p>
+          <div class="thumbnail">
+            <img src="assets/images/kids-1.jpg"/>
+          </div>
       </div>
-
-      <video class="videoSection" loop muted data-autoplay>
-        <source src="assets/images/008.mp4" type="video/mp4">
-        <source src="assets/images/008.webm" type="video/webm">
-      </video>
 
       <div class="next-page">
         <div class="arrow-down"></div>
@@ -963,16 +1002,18 @@
     </div>
 
     <!-- PAGE 9 ------------------------------------------------------------------------------------>
-    <div class="section" id="section9">
+    <div class="section" id="section8">
+
+      <div class="fp-bg" style="background-image: url('assets/images/009.jpg');"></div>
+
+      <svg id="def-line-2" viewBox="0 0 52.2 343.6" enable-background="new 0 0 52.2 343.6">
+        <polyline fill="none" stroke="#3ABFC9" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" points="32.9,-6.9 21.1,125.6 37.9,327.8 "/>
+      </svg>
+
 
       <div class="text-box">
-        <p>Een Eneco windmolen die 1 uur draait brengt een NS trein van Utrecht naar Groningen, zo’n 200 kilometer ver.</p>
+        <p>Een windmolen uit windpark Eneco Luchterduinen die 1 uur draait brengt een NS-trein van Utrecht naar Groningen, zo’n 200 kilometer ver.</p>
       </div>
-
-      <video class="videoSection" loop muted data-autoplay>
-        <source src="assets/images/009.mp4" type="video/mp4">
-        <source src="assets/images/009.webm" type="video/webm">
-      </video>
 
       <div class="next-page">
         <div class="arrow-down"></div>
@@ -980,29 +1021,15 @@
     </div>
 
     <!-- PAGE 10 ------------------------------------------------------------------------------------>
-    <div class="section" id="section10">
-
-      <div class="fp-bg" style="background-image: url('assets/images/010.jpg');"></div>
+    <div class="section" id="section9">
 
       <div class="text-box">
-        <p>We zweven net boven Noordwijk. Hier komt de kabel aan land.</p>
-      </div>
-
-      <div class="next-page">
-        <div class="arrow-down"></div>
-      </div>
-    </div>
-
-    <!-- PAGE 11 ------------------------------------------------------------------------------------>
-    <div class="section" id="section11">
-
-      <div class="text-box">
-        <p></p>
+        <p>We zijn net boven Noordwijk. Hier komt de kabel aan land.</p>
       </div>
 
       <video class="videoSection" loop muted data-autoplay>
-        <source src="assets/images/011.mp4" type="video/mp4">
-        <source src="assets/images/011.webm" type="video/webm">
+        <source src="assets/images/010.mp4" type="video/mp4">
+        <source src="assets/images/010.webm" type="video/webm">
       </video>
 
       <div class="next-page">
@@ -1010,17 +1037,33 @@
       </div>
     </div>
 
+    <!-- PAGE 11 ------------------------------------------------------------------------------------>
+    <div class="section" id="section10">
+
+      <div class="fp-bg" style="background-image: url('assets/images/011.jpg');"></div>
+
+      <svg id="def-line-3" x="0px" y="0px" viewBox="0 0 167.6 269.3" enable-background="new 0 0 167.6 269.3">
+        <polyline fill="none" stroke="#3ABFC9" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" points="15.8,10.5 35.8,125.4 100.1,162.8 157.6,257.7 "/>
+      </svg>
+
+
+      <div class="text-box">
+        <p>De stroom blijft ondergronds en reist verder landinwaarts.</p>
+      </div>
+
+      <div class="next-page">
+        <div class="arrow-down"></div>
+      </div>
+    </div>
+
     <!-- PAGE 12 ------------------------------------------------------------------------------------>
-    <div class="section" id="section12">
+    <div class="section" id="section11">
 
       <div class="fp-bg" style="background-image: url('assets/images/012.jpg');"></div>
 
-      <svg id="vivus-2" x="0px" y="0px" viewBox="0 0 122.9 716.2" enable-background="new 0 0 122.9 716.2" xml:space="preserve">
-        <path fill="none" stroke="#3ABFC9" stroke-width="5" stroke-miterlimit="10" d="M78.9,8.5 32.4,248.5 106.4,520.1 98.5,700.1 "/>
-      </svg>
-
       <div class="text-box">
-        <p>Hoe vaak moet een windmolen draaien om een NS trein één kilometer te laten rijden?</p>
+        <h1>Hoogspanningstation aan land</h1>
+        <p>Bij Sassenheim bereikt de windstroom een hoogspanningsstation. Dit knooppunt verdeelt de stroom in meerdere richtingen, ondergronds en via hoogspanningsmasten.</p>
       </div>
 
       <div class="next-page">
@@ -1029,10 +1072,10 @@
     </div>
 
     <!-- PAGE 13 ------------------------------------------------------------------------------------>
-    <div class="section" id="section13">
+    <div class="section" id="section12">
 
       <div class="text-box">
-        <p>"Op drie slagen van een Eneco-windmolen rijdt een NS-trein één kilometer."</p>
+        <p>De elektriciteit voor de trein loopt in een lagere spanning via een kabel onder de grond naar het onderstation bij het spoor.</p>
       </div>
 
       <video class="videoSection" loop muted data-autoplay>
@@ -1046,10 +1089,10 @@
     </div>
 
     <!-- PAGE 14 ------------------------------------------------------------------------------------>
-    <div class="section" id="section14">
+    <div class="section" id="section13">
 
       <div class="text-box">
-        <p>Bij Sassenheim bereikt de windstroom een hoogspanningsstation (D). Dit knooppunt verdeelt de stroom in meerdere richtingen, ondergronds en via hoogspanningsmasten.</p>
+        <p>Als alle autoreizigers in Nederland &eacute;&eacute;n keer per jaar de trein in plaats van de auto nemen voor een rit van 100 kilometer vermijden ze een CO2 uitstoot van 140 kiloton per jaar, vergelijkbaar met de jaaruitstoot van ruim 16.000 huishoudens.</p>
       </div>
 
       <video class="videoSection" loop muted data-autoplay>
@@ -1063,13 +1106,17 @@
     </div>
 
     <!-- PAGE 15 ------------------------------------------------------------------------------------>
-    <div class="section" id="section15">
-
-      <div class="fp-bg" style="background-image: url('assets/images/015.jpg');"></div>
+    <div class="section" id="section14">
 
       <div class="text-box">
-        <p>De elektriciteit voor de trein loopt in een lagere spanning in een kabel onder de grond door naar het spoor.</p>
+        <h1>ProRail onderstation Lisse</h1>
+        <p>Bij het onderstation van ProRail krijgt de elektriciteit de juiste spanning om de elektrische treinen van NS aan te drijven.</p>
       </div>
+
+      <video class="videoSection" loop muted data-autoplay>
+        <source src="assets/images/015.mp4" type="video/mp4">
+        <source src="assets/images/015.webm" type="video/webm">
+      </video>
 
       <div class="next-page">
         <div class="arrow-down"></div>
@@ -1077,17 +1124,15 @@
     </div>
 
     <!-- PAGE 16 ------------------------------------------------------------------------------------>
-    <div class="section" id="section16">
+    <div class="section" id="section15">
 
       <div class="fp-bg" style="background-image: url('assets/images/016.jpg');"></div>
 
-      <svg id="vivus-4" x="0px" y="0px" viewBox="0 0 401 475.5" enable-background="new 0 0 401 475.5" xml:space="preserve">
-        <path fill="none" stroke="#3ABFC9" stroke-width="5" stroke-miterlimit="10" d="M8.3,15.6 104.3,108 170.1,284.9
-        	386.5,452.3 "/>
-      </svg>
-
       <div class="text-box">
-        <p>Als alle autoreizigers in Nederland één keer per jaar de trein in plaats van de auto nemen voor een rit van 100 kilometer vermijden ze een CO2 uitstoot van 140 kiloton per jaar.</p>
+        <p>Hoeveel mensen vervoert NS dagelijks op 100% windstroom van Eneco?</p>
+        <div class="thumbnail">
+          <img src="assets/images/kids-2.jpg"/>
+        </div>
       </div>
 
       <div class="next-page">
@@ -1096,16 +1141,15 @@
     </div>
 
     <!-- PAGE 17 ------------------------------------------------------------------------------------>
-    <div class="section" id="section17">
+    <div class="section" id="section16">
+
+      <div class="fp-bg" style="background-image: url('assets/images/017.jpg');"></div>
 
       <div class="text-box">
-        <p>Ieder jaar levert Eneco genoeg groene stroom aan het Nederlandse elektriciteitsnet om dagelijks 5200 treinritten per dag maken, over 7.000 kilometer spoor.</p>
+        <p>Elke dag vervoert NS 600.000 mensen op 100% windstroom van Eneco. Dat zijn 1.200.000 treinreizen per dag zonder CO2-uitstoot.</p>
+          </br>
+        <p>Door de bovenleiding boven de spoorrails stroomt de windstroom verder naar de stroomafnemers van de trein.</p>
       </div>
-
-      <video class="videoSection" loop muted data-autoplay>
-        <source src="assets/images/017.mp4" type="video/mp4">
-        <source src="assets/images/017.webm" type="video/webm">
-      </video>
 
       <div class="next-page">
         <div class="arrow-down"></div>
@@ -1115,11 +1159,15 @@
     <!-- PAGE 18 ------------------------------------------------------------------------------------>
     <div class="section" id="section18">
 
-      <div class="fp-bg" style="background-image: url('assets/images/018.jpg');"></div>
-
       <div class="text-box">
-        <p>Hoeveel mensen vervoert NS dagelijks op 100% windstroom van Eneco?</p>
+        <h1>Trein van NS</h1>
+        <p>Hier ontmoet de windstroom van Eneco de NS-trein naar Amsterdam Centraal, nog geen 5 minuten geleden vertrokken vanuit station Leiden Centraal.</p>
       </div>
+
+      <video class="videoSection" loop muted data-autoplay>
+        <source src="assets/images/019.mp4" type="video/mp4">
+        <source src="assets/images/019.webm" type="video/webm">
+      </video>
 
       <div class="next-page">
         <div class="arrow-down"></div>
@@ -1129,10 +1177,15 @@
     <!-- PAGE 19 ------------------------------------------------------------------------------------>
     <div class="section" id="section19">
 
-      <div class="fp-bg" style="background-image: url('assets/images/019.jpg');"></div>
+      <div class="fp-bg" style="background-image: url('assets/images/020.jpg');"></div>
+
+      <svg id="def-line-4" x="0px" y="0px" viewBox="0 0 104.3 269.3" enable-background="new 0 0 104.3 269.3">
+         <polyline fill="none" stroke="#3ABFC9" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" points="83.8,10.5 35.8,90.6 67.5,162.8 75.4,250.3 "/>
+      </svg>
+
 
       <div class="text-box">
-        <p>Elke dag vervoert NS 600.000 mensen op 100% windstroom van Eneco. Dat zijn 1.200.000 treinreizen per dag zonder CO2- uitstoot.</p>
+        <p>Ieder jaar levert Eneco genoeg groene stroom aan NS om dagelijks 5200 treinritten per dag maken, over 7.000 kilometer spoor.*</p>
       </div>
 
       <div class="next-page">
@@ -1143,10 +1196,10 @@
     <!-- PAGE 20 ------------------------------------------------------------------------------------>
     <div class="section" id="section20">
 
-      <div class="fp-bg" style="background-image: url('assets/images/020.jpg');"></div>
+      <div class="fp-bg" style="background-image: url('assets/images/021.jpg');"></div>
 
       <div class="text-box">
-        <p>"Bij het onderstation van ProRail (E) krijgt de elektriciteit de juiste spanning om de elektrische treinen van NS aan te drijven."</p>
+        <p>E&eacute;n dubbeldekstrein kan net zoveel mensen vervoeren als in 1000 auto's zitten</p>
       </div>
 
       <div class="next-page">
@@ -1157,14 +1210,19 @@
     <!-- PAGE 21 ------------------------------------------------------------------------------------>
     <div class="section" id="section21">
 
-      <div class="text-box">
-        <p>Door de bovenleiding boven de spoorrails stroomt de windstroom door.</p>
-      </div>
+      <div class="fp-bg" style="background-image: url('assets/images/022.jpg'); background-position: bottom;"></div>
 
-      <video class="videoSection" loop muted data-autoplay>
-        <source src="assets/images/021.mp4" type="video/mp4">
-        <source src="assets/images/021.webm" type="video/webm">
-      </video>
+      <svg id="def-line-5" viewBox="0 0 135.4 362.6" enable-background="new 0 0 135.4 362.6">
+        <polyline fill="none" stroke="#3ABFC9" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="123.8,6.9 59.8,82.7 79.6,218.7 47.4,343.6 "/>
+      </svg>
+
+
+      <div class="text-box">
+        <p>Hoeveel kWh windstroom gebruiken de treinen van NS in &eacute;&eacute;n jaar?</p>
+        <div class="thumbnail">
+          <img src="assets/images/kids-3.jpg"/>
+        </div>
+      </div>
 
       <div class="next-page">
         <div class="arrow-down"></div>
@@ -1174,58 +1232,7 @@
     <!-- PAGE 22 ------------------------------------------------------------------------------------>
     <div class="section" id="section22">
 
-      <div class="text-box">
-        <p>testerstest</p>
-      </div>
-
-      <video class="videoSection" loop muted data-autoplay>
-        <source src="assets/images/022.mp4" type="video/mp4">
-        <source src="assets/images/022.webm" type="video/webm">
-      </video>
-
-      <div class="next-page">
-        <div class="arrow-down"></div>
-      </div>
-    </div>
-
-    <!-- PAGE 23 ------------------------------------------------------------------------------------>
-    <div class="section" id="section23">
-
       <div class="fp-bg" style="background-image: url('assets/images/023.jpg');"></div>
-
-      <div class="text-box">
-        <p>Het stroomverbruik van 1 elektrische dubbeldekstrein is gelijk aan 1.000 elektrische auto’s.</p>
-      </div>
-
-      <div class="next-page">
-        <div class="arrow-down"></div>
-      </div>
-    </div>
-
-    <!-- PAGE 24 ------------------------------------------------------------------------------------>
-    <div class="section" id="section24">
-
-      <div class="fp-bg" style="background-image: url('assets/images/024.jpg'); background-position: bottom;"></div>
-
-      <svg id="vivus-3" x="0px" y="0px"
-      	 viewBox="0 0 401 716.2" enable-background="new 0 0 401 716.2" xml:space="preserve">
-         <polyline fill="none" stroke="#3ABFC9" stroke-width="5" stroke-miterlimit="10" points="374,8.5 284.4,154.7 222.9,434.9 20.8,700.1 "/>
-      </svg>
-
-
-      <div class="text-box">
-        <p>Hoeveel kWh windstroom gebruiken de treinen van NS in één jaar?</p>
-      </div>
-
-      <div class="next-page">
-        <div class="arrow-down"></div>
-      </div>
-    </div>
-
-    <!-- PAGE 25 ------------------------------------------------------------------------------------>
-    <div class="section" id="section25">
-
-      <div class="fp-bg" style="background-image: url('assets/images/025.jpg');"></div>
 
       <div class="text-box">
         <p>NS verbruikt jaarlijks 1.200.000.000 kWh windstroom van Eneco. Dat is 1 procent van het totale Nederlandse stroomverbruik.</p>
@@ -1236,16 +1243,17 @@
       </div>
     </div>
 
-    <!-- PAGE 26 ------------------------------------------------------------------------------------>
-    <div class="section" id="section26">
+    <!-- PAGE 23 ------------------------------------------------------------------------------------>
+    <div class="section" id="section23">
 
       <div class="text-box">
-        <p>Text</p>
+        <h1>Station Amsterdam Centraal</h1>
+        <p>Of net zoveel als alle huishoudens hier in Amsterdam elk jaar aan elektriciteit verbruiken.</p>
       </div>
 
       <video class="videoSection" loop muted data-autoplay>
-        <source src="assets/images/027.mp4" type="video/mp4">
-        <source src="assets/images/027.webm" type="video/webm">
+        <source src="assets/images/024.mp4" type="video/mp4">
+        <source src="assets/images/024.webm" type="video/webm">
       </video>
 
       <div class="next-page">
@@ -1253,45 +1261,61 @@
       </div>
     </div>
 
-    <!-- PAGE 27 ------------------------------------------------------------------------------------>
-    <div class="section" id="section27">
+    <!-- PAGE 24 ------------------------------------------------------------------------------------>
+    <div class="section" id="section24">
 
-      <div class="fp-bg" style="background-image: url('assets/images/028.jpg');"></div>
+      <div class="fp-bg" style="background-image: url('assets/images/025.jpg');"></div>
 
       <div class="text-box">
-        <p>Of net zoveel als alle huishoudens hier Amsterdam (F) elk jaar aan elektriciteit verbruiken.</p>
+        <h1>Bestemming bereikt. Deel deze reis met je vrienden.</h1>
+            <ul class="share-buttons">
+              <li data-social="Share to Facebook" class="share-fb"><a href="https://www.facebook.com/sharer/sharer.php?u=&t=" title="Share on Facebook" target="_blank"></a></li>
+              <li data-social="Share to Twitter" class="share-tw"><a href="https://twitter.com/intent/tweet?source=&text=:%20" target="_blank" title="Tweet"></a></li>
+              <li data-social="Share to LinkedIn" class="share-li"><a href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=&source=" target="_blank" title="Share on LinkedIn"></a></li>
+              <li data-social="Share by Email" class="share-em"><a href="mailto:?subject=&body=:%20" target="_blank" title="Send email"></a></li>
+            </ul>
       </div>
 
+      <div class="disclaimer">
+        <p>*Elektriciteit kiest de weg van de minste weerstand. Eneco zet in een jaar net zoveel groene stroom uit windparken op het elektriciteitsnet als de treinen van NS in een jaar verbruiken. </p>
+      </div>
     </div>
-
-
 
   </div>
 
   <script>
-    var vivusNo1 = new Vivus('vivus-1', {
-      duration: 150,
+
+    // LINES
+    var vivusLine1 = new Vivus('def-line-1', {
+      duration: 100,
       start: 'manual',
       pathTimingFunction: Vivus.EASE_OUT,
       type: 'sync'
     });
 
-    var vivusNo2 = new Vivus('vivus-2', {
-      duration: 150,
+    var vivusLine2 = new Vivus('def-line-2', {
+      duration: 100,
       start: 'manual',
       pathTimingFunction: Vivus.EASE_OUT,
       type: 'sync'
     });
 
-    var vivusNo3 = new Vivus('vivus-3', {
-      duration: 150,
+    var vivusLine3 = new Vivus('def-line-3', {
+      duration: 100,
       start: 'manual',
       pathTimingFunction: Vivus.EASE_OUT,
       type: 'sync'
     });
 
-    var vivusNo4 = new Vivus('vivus-4', {
-      duration: 150,
+    var vivusLine4 = new Vivus('def-line-4', {
+      duration: 100,
+      start: 'manual',
+      pathTimingFunction: Vivus.EASE_OUT,
+      type: 'sync'
+    });
+
+    var vivusLine5 = new Vivus('def-line-5', {
+      duration: 100,
       start: 'manual',
       pathTimingFunction: Vivus.EASE_OUT,
       type: 'sync'
